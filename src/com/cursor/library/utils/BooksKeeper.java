@@ -33,8 +33,8 @@ public class BooksKeeper {
         return true;
     }
 
-    public boolean addBook(Book book) {
-        addBook(new DateKey(), book);
+    public boolean addBook(String book) {
+        addBook(new DateKey(), new Book(book));
         return true;
 
     }

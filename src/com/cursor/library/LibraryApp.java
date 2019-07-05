@@ -1,6 +1,5 @@
 package com.cursor.library;
 
-import com.cursor.library.utils.Book;
 import com.cursor.library.utils.BooksKeeper;
 
 import java.util.Scanner;
@@ -51,7 +50,7 @@ class LibraryApp {
 
     private void borrowBook() {
         System.out.println("Enter the name of the book you wish to borrow");
-        booksKeeper.addBook(new Book(scanner.nextLine()));
+        booksKeeper.addBook(scanner.nextLine());
         System.out.println("Book added successfully.");
     }
 
