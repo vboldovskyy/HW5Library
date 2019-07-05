@@ -2,11 +2,18 @@ package com.cursor.library.utils;
 
 import java.util.*;
 
-public class BooksList {
+public class BooksKeeper {
 
     private Map<DateKey, Set<Book>> bookMap;
+    private static BooksKeeper booksKeeper;
 
-    public BooksList() {
+    public static BooksKeeper getInstance(){
+        if (booksKeeper == null) {
+            booksKeeper = new BooksKeeper();
+        }
+        return booksKeeper;
+    }
+    private BooksKeeper() {
 
         bookMap = new HashMap<>();
         addBook(new DateKey("31-12-1999"), new Book("Harry Potter and Hermiona`s Boobs"));

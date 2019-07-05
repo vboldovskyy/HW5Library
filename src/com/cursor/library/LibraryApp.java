@@ -1,17 +1,17 @@
 package com.cursor.library;
 
 import com.cursor.library.utils.Book;
-import com.cursor.library.utils.BooksList;
+import com.cursor.library.utils.BooksKeeper;
 
 import java.util.Scanner;
 
 class LibraryApp {
 
-    private BooksList booksList;
+    private BooksKeeper booksKeeper;
     private Scanner scanner;
 
     LibraryApp() {
-        booksList = new BooksList();
+        booksKeeper = BooksKeeper.getInstance();
         scanner = new Scanner(System.in);
     }
 
@@ -33,10 +33,10 @@ class LibraryApp {
                 viewByDate();
                 break;
                 case "3":
-                print(booksList.retrieveAllBooks());
+                print(booksKeeper.retrieveAllBooks());
                 break;
                 case "4":
-                print(booksList.retrieveAllDates());
+                print(booksKeeper.retrieveAllDates());
                 break;
                 case "5":
                 print("GOODBYE!");
@@ -51,14 +51,14 @@ class LibraryApp {
 
     private void borrowBook() {
         System.out.println("Enter the name of the book you wish to borrow");
-        booksList.addBook(new Book(scanner.nextLine()));
+        booksKeeper.addBook(new Book(scanner.nextLine()));
         System.out.println("Book added successfully.");
     }
 
     private void viewByDate() {
         System.out.println("Enter the date in format d-m-yyyy");
         String reply = scanner.nextLine();
-        print(booksList.retrieveBooksByDate(reply));
+        print(booksKeeper.retrieveBooksByDate(reply));
     }
 
     private void print(String str) {
