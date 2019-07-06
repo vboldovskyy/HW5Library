@@ -5,7 +5,6 @@ import com.cursor.library.utils.BooksKeeper;
 import java.util.Scanner;
 
 class LibraryApp {
-
     private BooksKeeper booksKeeper;
     private Scanner scanner;
 
@@ -24,26 +23,26 @@ class LibraryApp {
             System.out.println("To view all dates you borrowed books press 4");
             System.out.println("To quit press 5");
             String reply = scanner.nextLine();
-            switch(reply){
+            switch (reply) {
                 case "1":
-                borrowBook();
-                break;
+                    borrowBook();
+                    break;
                 case "2":
-                viewByDate();
-                break;
+                    viewByDate();
+                    break;
                 case "3":
-                print(booksKeeper.retrieveAllBooks());
-                break;
+                    print(booksKeeper.retrieveAllBooks());
+                    break;
                 case "4":
-                print(booksKeeper.retrieveAllDates());
-                break;
+                    print(booksKeeper.retrieveAllDates());
+                    break;
                 case "5":
-                print("GOODBYE!");
-                System.exit(0);
-                break;
+                    print("GOODBYE!");
+                    System.exit(0);
+                    break;
                 default:
-                System.out.println("Sorry, your input has not been recognized. Please, try again");
-                print("");
+                    System.out.println("Sorry, your input has not been recognized. Please, try again");
+                    print("");
             }
         }
     }

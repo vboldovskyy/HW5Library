@@ -7,28 +7,26 @@ public final class DateKey {
     private final String date;
     //This class is a representation of an immutable single format date for usage as a key in a map.
 
-    DateKey()
-    {
+    DateKey() {
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("d-M-yyyy");
         this.date = sdf.format(now);
     }
 
-    DateKey(String dateKey){
-        this.date=dateKey;
+    DateKey(String dateKey) {
+        this.date = dateKey;
     }
 
-    public String toString(){
+    public String toString() {
         return date;
     }
 
-    public boolean equals (Object o)
-    {
+    public boolean equals(Object o) {
         if (o == null) return false;
-        return (o instanceof DateKey) && ((DateKey)o).date.equals(this.date);
+        return (o instanceof DateKey) && ((DateKey) o).date.equals(this.date);
     }
 
-    public int hashCode(){
+    public int hashCode() {
         return date.hashCode();
     }
 }

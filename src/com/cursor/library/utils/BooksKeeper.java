@@ -7,12 +7,13 @@ public class BooksKeeper {
     private Map<DateKey, Set<Book>> bookMap;
     private static BooksKeeper booksKeeper;
 
-    public static BooksKeeper getInstance(){
+    public static BooksKeeper getInstance() {
         if (booksKeeper == null) {
             booksKeeper = new BooksKeeper();
         }
         return booksKeeper;
     }
+
     private BooksKeeper() {
 
         bookMap = new HashMap<>();
@@ -48,19 +49,19 @@ public class BooksKeeper {
         for (Map.Entry<DateKey, Set<Book>> entry : bookMap.entrySet()) {
             allBooks.addAll(entry.getValue());
         }
-         return convertToString(allBooks);
+        return convertToString(allBooks);
     }
 
     public String retrieveBooksByDate(String dateKey) {
         Set<Book> booksOnADate = bookMap.get(new DateKey(dateKey));
-        if (booksOnADate == null){
+        if (booksOnADate == null) {
             return "No books found for this date";
         }
 
         return convertToString(booksOnADate);
     }
 
-    private String convertToString(Set set){
+    private String convertToString(Set set) {
         StringBuilder builder = new StringBuilder();
         for (Object a : set)
             builder.append("\n").append(a.toString());
