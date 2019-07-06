@@ -54,7 +54,7 @@ class LibraryApp {
     }
 
     private void viewByDate() {
-        System.out.println("Enter the date in format d-m-yyyy");
+        System.out.println("Enter the date in format d-M-yyyy");
         String reply = scanner.nextLine();
         print(booksKeeper.retrieveBooksByDate(reply));
     }

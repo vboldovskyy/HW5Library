@@ -1,10 +1,11 @@
 package com.cursor.library.utils;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class BooksKeeper {
 
-    private Map<DateKey, Set<Book>> bookMap;
+    private Map<String, Set<Book>> bookMap;
     private static BooksKeeper booksKeeper;
 
     public static BooksKeeper getInstance() {
@@ -17,14 +18,13 @@ public class BooksKeeper {
     private BooksKeeper() {
 
         bookMap = new HashMap<>();
-        addBook(new DateKey("31-12-1999"), new Book("Harry Potter and Hermiona`s Boobs"));
-        addBook(new DateKey("7-7-2007"), new Book("Head First Java"));
-        addBook(new DateKey("7-7-2007"), new Book("Fifty Shades of Gray"));
-        addBook(new DateKey("7-7-2007"), new Book("Fifty Shades of Gray"));
-        addBook(new DateKey("30-6-2019"), new Book("Short history of time"));
+        addBook("31-12-1999", new Book("Harry Potter and Hermiona`s Boobs"));
+        addBook("7-7-2007", new Book("Head First Java"));
+        addBook("7-7-2007", new Book("Fifty Shades of Gray"));
+        addBook("30-6-2019", new Book("Short history of time"));
     }
 
-    private boolean addBook(DateKey key, Book book) {
+    private boolean addBook(String key, Book book) {
         Set<Book> value = bookMap.get(key);
         if (value == null) {
             value = new HashSet<>();
@@ -35,9 +35,8 @@ public class BooksKeeper {
     }
 
     public boolean addBook(String book) {
-        addBook(new DateKey(), new Book(book));
+        addBook(new SimpleDateFormat("d-M-yyyy").format(new Date()), new Book(book));
         return true;
-
     }
 
     public String retrieveAllDates() {
@@ -46,14 +45,14 @@ public class BooksKeeper {
 
     public String retrieveAllBooks() {
         Set<Book> allBooks = new HashSet<>();
-        for (Map.Entry<DateKey, Set<Book>> entry : bookMap.entrySet()) {
+        for (Map.Entry<String, Set<Book>> entry : bookMap.entrySet()) {
             allBooks.addAll(entry.getValue());
         }
         return convertToString(allBooks);
     }
 
     public String retrieveBooksByDate(String dateKey) {
-        Set<Book> booksOnADate = bookMap.get(new DateKey(dateKey));
+        Set<Book> booksOnADate = bookMap.get(dateKey);
         if (booksOnADate == null) {
             return "No books found for this date";
         }
